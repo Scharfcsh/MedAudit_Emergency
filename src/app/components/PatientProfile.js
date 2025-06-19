@@ -223,7 +223,8 @@ export default function PatientProfile() {
     );
   }
 
-  const { patient, session, documents } = patientData.data;
+  const { patient: patientInfo, session, documents } = patientData.data;
+  const patient = patientInfo.profile; // Extract profile data
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -516,7 +517,9 @@ export default function PatientProfile() {
                     Doctor
                   </label>
                   <p className="text-gray-900 font-medium">
-                    {patient?.primary_physician?.name}
+                    {patient?.primary_physician?.name === "Dr. Unknown" 
+                      ? "Not assigned" 
+                      : patient?.primary_physician?.name}
                   </p>
                 </div>
                 <div>
@@ -540,7 +543,7 @@ export default function PatientProfile() {
                     Last Visit
                   </label>
                   <p className="text-gray-900">
-                    {formatDate(patient?.last_visit)}
+                    {patient?.last_visit ? formatDate(patient.last_visit) : "No recent visits"}
                   </p>
                 </div>
               </div>
