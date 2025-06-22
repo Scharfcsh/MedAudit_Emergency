@@ -19,7 +19,9 @@ export default function NFCScanner() {
                 reader.onreading = (event) => {
                     const data = event.message.records[0].data;
                     const text = new TextDecoder().decode(data);
-                    setNfcData(text);
+                    const urlMatch = text.match(/card_id=([^&]+)/);
+                    const cardId = urlMatch ? urlMatch[1] : text;
+                    setNfcData(cardId);
 
                     // Send to server
                     // fetch("http://your-server-ip:3000/nfc", {
