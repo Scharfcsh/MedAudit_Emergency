@@ -43,12 +43,12 @@ export default function NFCScanner() {
           setIsScanning(false)
         }
       } else {
-          const card_id = "e81c6c64-c040-444d-92c2-419a8847e370";
-        await fetch('https://trialdev.amanadhikari.me/nfc', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ card_id: card_id }),
-            });
+        //   const card_id = "e81c6c64-c040-444d-92c2-419a8847e370";
+        // await fetch('https://trialdev.amanadhikari.me/nfc', {
+        //       method: 'POST',
+        //       headers: { 'Content-Type': 'application/json' },
+        //       body: JSON.stringify({ card_id: card_id }),
+        //     });
         setError("Web NFC is not supported on this browser.")
         console.log("Web NFC is not supported on this browser.");
         setIsScanning(false)
